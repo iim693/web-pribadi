@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Alexander Nasima</title>
+    <style>
+        /* CSS Reset & Variable */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 1. NAVIGASI */
+        nav {
+            background-color: #2e7d32;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* KARTU UMUM */
+        .card {
+            background-color: #ffffff;
+            margin: 25px 0;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .card h3, section-title {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        /* 2. PROFIL */
+        .profile-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #e8f5e9;
+            margin-bottom: 15px;
+        }
+
+        .profile-card h2 {
+            margin-bottom: 5px;
+            color: #1b5e20;
+        }
+
+        .subtitle {
+            color: #666;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .bio {
+            color: #555;
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 3. PRESTASI (TABLE) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* 4. KONTAK FORM */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .contact-form textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .contact-form button:hover {
+            background-color: #1b5e20;
+        }
+
+        /* 5. KEAHLIAN / SKILL */
+        .skill-item {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .skill-name {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        .bar-bg {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            height: 12px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            background-color: #4caf50;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        /* 6. GALLERY */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .gallery-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .gallery-card h4 {
+            font-size: 15px;
+            color: #333;
+        }
+
+        /* 7. FAQ */
+        details {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            text-align: left;
+            transition: border-color 0.2s;
+        }
+
+        details[open] {
+            border-color: #4caf50;
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #2e7d32;
+        }
+
+        details p {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* 8. MEDIA SOSIAL */
+        .sosmed-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .sosmed-btn {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .sosmed-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .sosmed-btn.instagram { background-color: #e1306c; }
+        .sosmed-btn.facebook  { background-color: #1877f2; }
+        .sosmed-btn.whatsapp  { background-color: #25d366; }
+
+        /* 9. TESTIMONI */
+        .testimoni-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            border-left: 4px solid #2e7d32;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 12px;
+            color: #2e7d32;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. NAVIGASI MENU -->
+    <nav>
+        <a href="#profil">Profil</a>
+        <a href="#prestasi">Prestasi</a>
+        <a href="#kontak">Kontak</a>
+        <a href="#skill">Skill</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- 2. PROFIL & PHOTO -->
+        <div class="card profile-card" id="profil">
+            <img src="photo siswa baru.jpg" alt="Foto Alexander Nasima">
+            <h2>Alexander Nasima</h2>
+            <p class="subtitle">Siswa Nasima | Web Developer Pemula</p>
+            <p class="bio">
+                Saya adalah siswa yang berprestasi di Sekolah Nasima. Saya senang belajar hal baru, khususnya dalam dunia pengembangan web dan olahraga.
+            </p>
+        </div>
+
+        <!-- 3. PRESTASI -->
+        <div class="card" id="prestasi">
+            <h3>Prestasi Saya</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50px; text-align: center;">No</th>
+                        <th>Lomba</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">1</td>
+                        <td>Juara 1 Badminton Kota Semarang</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">2</td>
+                        <td>Juara 2 Basket Kota Semarang</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 4. INFORMASI KONTAK -->
+        <div class="card" id="kontak">
+            <h3>Kontak Saya</h3>
+            <form class="contact-form">
+                <input type="text" placeholder="Nama Kamu" required>
+                <textarea placeholder="Pesan Kamu" required></textarea>
+                <button type="submit">Kirim Pesan</button>
+            </form>
+        </div>
+
+        <!-- 5. KEAHLIAN / SKILL -->
+        <div class="card" id="skill">
+            <h3>Keahlian Saya</h3>
+
+            <div class="skill-item">
+                <div class="skill-name">Bermain Basket (85%)</div>
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width: 85%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-name">Bermain Badminton (70%)</div>
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width: 70%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-name">Lari (90%)</div>
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width: 90%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. GALERI PROYEK -->
+        <div class="card" id="galeri">
+            <h3>Galeri Kegiatan</h3>
+            <div class="gallery-container">
+                <div class="gallery-card">
+                    <img src="logo-nasima.jpg" alt="Bermain Basket">
+                    <h4>Bermain Basket</h4>
+                </div>
+                <div class="gallery-card">
+                    <img src="logo-nasima.jpg" alt="Bermain Badminton">
+                    <h4>Bermain Badminton</h4>
+                </div>
+                <div class="gallery-card">
+                    <img src="logo-nasima.jpg" alt="Lomba Lari">
+                    <h4>Kegiatan Lari</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. FAQ (TANYA JAWAB) -->
+        <div class="card" id="faq">
+            <h3>Pertanyaan Umum</h3>
+
+            <details>
+                <summary>Apakah kamu bangga sekolah di SMP NASIMA?</summary>
+                <p>Sangat bangga, karena sekolah ini memiliki fasilitas yang lengkap dan mendukung bakat para siswanya.</p> 
+            </details>
+
+            <details>
+                <summary>Rencana kelanjutan setelah lulus dari SMP NASIMA?</summary>
+                <p>Saya berencana untuk melanjutkan ke SMA favorit untuk makin mengembangkan kemampuan akademis dan olahraga.</p>
+            </details>
+
+            <details>
+                <summary>Coba berikan 1 hal unik yang ada pada dirimu?</summary>
+                <p>Saya cepat beradaptasi dengan lingkungan baru dan selalu semangat saat belajar teknologi baru.</p>
+            </details>
+        </div>
+
+        <!-- 8. MEDIA SOSIAL -->
+        <div class="card" id="sosmed">
+            <h3>Media Sosial Saya</h3>
+            <p style="color: #666; font-size: 14px;">Mari berteman dan terhubung dengan saya:</p>
+
+            <div class="sosmed-container">
+                <a href="https://instagram.com/coolsigmabiez" target="_blank" class="sosmed-btn instagram">Instagram</a>
+                <a href="https://facebook.com" target="_blank" class="sosmed-btn facebook">Facebook</a>
+                <a href="https://whatsapp.com" target="_blank" class="sosmed-btn whatsapp">WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- 9. TESTIMONI -->
+        <div class="card" id="testimoni">
+            <h3>Kata Mereka</h3>
+            <div class="testimoni-container">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Alexander adalah teman yang sangat sportif dan kerja samanya bagus saat main basket."</p>
+                    <p class="testimonial-author">- Andi (Teman Sekelas)</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Anaknya giat dan selalu bersemangat dalam mempelajari hal baru."</p>
+                    <p class="testimonial-author">- Budi (Teman Tim)</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
